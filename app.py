@@ -51,7 +51,7 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 
 
 def getPrediction(filename):
-    
+ '''   
     classes =  ['Tomato_Target_Spot',
  'Tomato_YellowLeaf_Curl_Virus',
  'Maize_Healthy',
@@ -74,12 +74,28 @@ def getPrediction(filename):
  'Maize_Streak_Virus (MSV)',
  'Cassava_Mosaic_Disease (CMD)',
  'Bean_Healthy']
+'''
+
+
+    class_names = {
+    '0':'Tomato_Target_Spot', '1':'Tomato_YellowLeaf_Curl_Virus',
+     '2':'Maize_Healthy','3':'Maize_Cercospora_Leaf_Spot (CLS)',
+     '4':'Tomato_Late_Blight','5':'Tomato_Mosaic_Virus',
+      '6':'Tomato_Early_Blight','7':'Maize_Leaf_Blight (MLB)',
+      '8':'Maize_Fall_Army_Worm (FAW)','9':'Tomato_Spider_Mite',
+     '10':'Cassava_Healthy','11':'Tomato_Bacterial_Spot',
+     '12':'Bean_Rust (BR)','13':'Tomato_Leaf_Mold',
+     '14':'Maize_Lethal_Necrosis (MLN)','15':'Cassava_Brown_Streak_Disease (CBSD)',
+     '16':'Bean_Angular_Leaf_Spot (ALS)','17':'Tomato_Septoria_Leaf_Spot',
+     '18':'Tomato_Healthy','19':'Maize_Streak_Virus (MSV)',
+     '20':'Cassava_Mosaic_Disease (CMD)','21':'Bean_Healthy'
+  }
 
 
 
-    le = LabelEncoder()
-    le.fit(classes)
-    le.inverse_transform([2])
+    #le = LabelEncoder()
+    #le.fit(classes)
+    #le.inverse_transform([2])
     
     
     #Load model
@@ -94,13 +110,14 @@ def getPrediction(filename):
     
     img = np.expand_dims(img, axis=0)  #Get it tready as input to the network       
     
-    pred = my_model.predict(img) #Predict                    
+    predictions = my_model.predict(img) #Predict                    
     
     #Convert prediction to class name
-    pred_class = le.inverse_transform([np.argmax(pred)])[0]
-    pred_prob = str(np.max(pred))
-    print(f"Plant Disease is: {pred_class} with probability:{pred_prob}")
-    return pred_class,pred_prob
+    #pred_class = le.inverse_transform([np.argmax(pred)])[0]
+    predicted_class = class_names.get(str(predictions.argmax()))
+    predicted_prob = str(np.max(prediction))
+    print(f"Plant Disease is: {predicted_class} with probability:{predicted_prob}")
+    return predicted_class,predicted_prob
 
 
 
