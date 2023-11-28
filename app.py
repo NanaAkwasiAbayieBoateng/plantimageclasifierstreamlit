@@ -52,28 +52,29 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 
 def getPrediction(filename):
     
-    classes = ['Tomato_YellowLeaf_Curl_Virus',
- 'Tomato_Leaf_Mold',
- 'Cassava_Mosaic_Disease (CMD)',
- 'Tomato_Bacterial_Spot',
- 'Bean_Healthy',
- 'Tomato_Mosaic_Virus',
- 'Tomato_Target_Spot',
+    classes =  ['Tomato_Target_Spot',
+ 'Tomato_YellowLeaf_Curl_Virus',
+ 'Maize_Healthy',
+ 'Maize_Cercospora_Leaf_Spot (CLS)',
  'Tomato_Late_Blight',
+ 'Tomato_Mosaic_Virus',
  'Tomato_Early_Blight',
  'Maize_Leaf_Blight (MLB)',
+ 'Maize_Fall_Army_Worm (FAW)',
+ 'Tomato_Spider_Mite',
  'Cassava_Healthy',
+ 'Tomato_Bacterial_Spot',
+ 'Bean_Rust (BR)',
+ 'Tomato_Leaf_Mold',
  'Maize_Lethal_Necrosis (MLN)',
  'Cassava_Brown_Streak_Disease (CBSD)',
  'Bean_Angular_Leaf_Spot (ALS)',
- 'Maize_Healthy',
  'Tomato_Septoria_Leaf_Spot',
- 'Maize_Cercospora_Leaf_Spot (CLS)',
- 'Maize_Fall_Army_Worm (FAW)',
- 'Bean_Rust (BR)',
  'Tomato_Healthy',
  'Maize_Streak_Virus (MSV)',
- 'Tomato_Spider_Mite']
+ 'Cassava_Mosaic_Disease (CMD)',
+ 'Bean_Healthy']
+
 
 
     le = LabelEncoder()
