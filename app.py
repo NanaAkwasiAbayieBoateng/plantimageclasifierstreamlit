@@ -24,11 +24,11 @@ with st.spinner('Model is being loaded..'):
   model=load_model()
  
 st.write("""
-         # Image Classification
+         # Plant Disease Classification
          """
          )
  
-file = st.file_uploader("Upload the image to be classified U0001F447", type=["jpg", "png"])
+file = st.file_uploader("Upload the image to be classified here", type=["jpg", "png"])
 st.set_option('deprecation.showfileUploaderEncoding', False)
  
 #def upload_predict(upload_image, model):
@@ -140,5 +140,5 @@ else:
     pred_class =  out[0]
     pred_prob =    np.round(float(out[1]),3)
     st.write("The image is classified as",pred_class)
-    st.write("The similarity score is approximately",pred_prob)
-    print("The image is classified as ",pred_class, "with a similarity score of",pred_prob)
+    st.write("The probability is approximately",pred_prob)
+    print("The image is classified as ",pred_class, "with a probability of",pred_prob)
