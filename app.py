@@ -50,32 +50,32 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 
 
 
-def getPrediction(filename):
- '''   
-    classes =  ['Tomato_Target_Spot',
- 'Tomato_YellowLeaf_Curl_Virus',
- 'Maize_Healthy',
- 'Maize_Cercospora_Leaf_Spot (CLS)',
- 'Tomato_Late_Blight',
- 'Tomato_Mosaic_Virus',
- 'Tomato_Early_Blight',
- 'Maize_Leaf_Blight (MLB)',
- 'Maize_Fall_Army_Worm (FAW)',
- 'Tomato_Spider_Mite',
- 'Cassava_Healthy',
- 'Tomato_Bacterial_Spot',
- 'Bean_Rust (BR)',
- 'Tomato_Leaf_Mold',
- 'Maize_Lethal_Necrosis (MLN)',
- 'Cassava_Brown_Streak_Disease (CBSD)',
- 'Bean_Angular_Leaf_Spot (ALS)',
- 'Tomato_Septoria_Leaf_Spot',
- 'Tomato_Healthy',
- 'Maize_Streak_Virus (MSV)',
- 'Cassava_Mosaic_Disease (CMD)',
- 'Bean_Healthy']
-'''
+  
+#    classes =  ['Tomato_Target_Spot',
+# 'Tomato_YellowLeaf_Curl_Virus',
+# 'Maize_Healthy',
+# 'Maize_Cercospora_Leaf_Spot (CLS)',
+# 'Tomato_Late_Blight',
+# 'Tomato_Mosaic_Virus',
+#'Tomato_Early_Blight',
+# 'Maize_Leaf_Blight (MLB)',
+# 'Maize_Fall_Army_Worm (FAW)',
+# 'Tomato_Spider_Mite',
+# 'Cassava_Healthy',
+# 'Tomato_Bacterial_Spot',
+# 'Bean_Rust (BR)',
+# 'Tomato_Leaf_Mold',
+# 'Maize_Lethal_Necrosis (MLN)',
+# 'Cassava_Brown_Streak_Disease (CBSD)',
+# 'Bean_Angular_Leaf_Spot (ALS)',
+# 'Tomato_Septoria_Leaf_Spot',
+ #'Tomato_Healthy',
+# 'Maize_Streak_Virus (MSV)',
+# 'Cassava_Mosaic_Disease (CMD)',
+# 'Bean_Healthy']
 
+
+def getPrediction(filename):
 
     class_names = {
     '0':'Tomato_Target_Spot', '1':'Tomato_YellowLeaf_Curl_Virus',
@@ -89,7 +89,9 @@ def getPrediction(filename):
      '16':'Bean_Angular_Leaf_Spot (ALS)','17':'Tomato_Septoria_Leaf_Spot',
      '18':'Tomato_Healthy','19':'Maize_Streak_Virus (MSV)',
      '20':'Cassava_Mosaic_Disease (CMD)','21':'Bean_Healthy'
-  }
+      }
+
+    
 
 
 
@@ -115,7 +117,7 @@ def getPrediction(filename):
     #Convert prediction to class name
     #pred_class = le.inverse_transform([np.argmax(pred)])[0]
     predicted_class = class_names.get(str(predictions.argmax()))
-    predicted_prob = str(np.max(prediction))
+    predicted_prob = str(np.max(predictions))
     print(f"Plant Disease is: {predicted_class} with probability:{predicted_prob}")
     return predicted_class,predicted_prob
 
