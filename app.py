@@ -31,7 +31,7 @@ st.write("""
 file = st.file_uploader("Upload the image to be classified U0001F447", type=["jpg", "png"])
 st.set_option('deprecation.showfileUploaderEncoding', False)
  
-def upload_predict(upload_image, model):
+#def upload_predict(upload_image, model):
     
         #size = (180,180)    
         #image = ImageOps.fit(upload_image, size, Image.ANTIALIAS)
@@ -43,10 +43,10 @@ def upload_predict(upload_image, model):
     
         #prediction =   model.predict(img_reshape)
         #pred_class  =  decode_predictions(prediction,top=1)
-        out  =        getPrediction(upload_image)
-        pred_class =  out[0]
-        pred_prob =    out[1]
-        return pred_class,pred_prob
+ #       out  =        getPrediction(upload_image)
+  #      pred_class =  out[0]
+  #      pred_prob =    out[1]
+ #       return pred_class,pred_prob
 
 
 
@@ -87,8 +87,8 @@ def getPrediction(filename):
     
     SIZE = 224 #Resize to same size as training images
     #img_path = 'static/images/'+filename
-    img = np.asarray(Image.open(filename).resize((SIZE,SIZE)))
-    
+    img = np.asarray(Image.open(filename).resize((SIZE,SIZE)) ,dtype='float64')
+    img = img.astype(np.float64)
     #img = img/255.      #Scale pixel values
     
     img = np.expand_dims(img, axis=0)  #Get it tready as input to the network       
@@ -118,7 +118,7 @@ else:
     
     out  =        getPrediction(file)
     pred_class =  out[0]
-    pred_prob =    np.round(out[1],3)
+    pred_prob =    np.round(float(out[1]),3)
     st.write("The image is classified as",pred_class)
     st.write("The similarity score is approximately",pred_prob)
     print("The image is classified as ",pred_class, "with a similarity score of",pred_prob)
