@@ -22,6 +22,8 @@ def load_model():
   return model
 with st.spinner('Model is being loaded..'):
   model=load_model()
+
+st.image('banner.jpg', caption=None, width=20, use_column_width=True, clamp=False, channels="RGB", output_format="auto")
  
 st.write("""
          # Plant Disease Classification
@@ -142,3 +144,5 @@ else:
     st.write("The image is classified as",pred_class)
     st.write("The probability is approximately",pred_prob)
     print("The image is classified as ",pred_class, "with a probability of",pred_prob)
+    with open(os.path.join("images",file.name),"wb") as f:
+         f.write(file.getbuffer())
